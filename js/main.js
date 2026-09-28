@@ -1,105 +1,44 @@
-(function () {
-  const C = window.TELTORI, P = C.unitPrice, S = window.Store;
-  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-  const D = '০১২৩৪৫৬৭৮৯', bn = n => String(n).replace(/\d/g, d => D[d]);
-  const money = n => '৳' + bn(n.toLocaleString('en-US')), norm = s => s.replace(/[০-৯]/g, d => D.indexOf(d));
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+AOS.init({
+    duration: 1000,
+    once: true
+});
 
-  /* ১) শুরুর সিকোয়েন্স শেষ হলে হিরো অ্যানিমেশন চালু */
-  const ready = new Promise(r => setTimeout(r, reduced ? 0 : 1750));
-  ready.then(() => document.body.classList.add('ready'));
-
-  /* ২) শিরোনাম শব্দ ধরে মাস্ক-রিভিল (বাংলা যুক্তাক্ষর ভাঙে না) */
-  $$('[data-split]').forEach(el => {
-    el.innerHTML = el.textContent.trim().split(/\s+/).map((w, i) => '<span class="w"><span style="--i:' + i + '">' + w + '</span></span>').join(' ');
-  });
-  function count(el) {
-    const n = +el.dataset.count, suf = el.dataset.suf || '', t0 = performance.now(), dur = reduced ? 1 : 1400;
-    (function step(t) {
-      const k = Math.min(1, (t - t0) / dur), v = Math.round(n * (1 - Math.pow(1 - k, 3)));
-      el.textContent = bn(v.toLocaleString('en-US')) + suf;
-      if (k < 1) requestAnimationFrame(step);
-    })(t0);
-  }
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target; io.unobserve(el);
-    const go = () => { el.classList.add('in'); if (el.dataset.count) count(el); };
-    el.closest('.hero') ? ready.then(go) : go();
-  }), { threshold: .3 });
-  $$('[data-split],[data-count]').forEach(el => io.observe(el));
-
-  /* ৩) উপকারিতার সারি স্ক্রলে জ্বলে ওঠে */
-  const ro = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('on', e.isIntersecting)), { rootMargin: '-42% 0px -42% 0px' });
-  $$('.rows li').forEach(li => ro.observe(li));
-
-  /* ৪) ভাসমান কালোজিরা */
-  const sd = $('.seeds');
-  if (sd && !reduced) for (let i = 0; i < 16; i++) {
-    const s = document.createElement('i');
-    s.style.cssText = 'left:' + Math.random() * 100 + '%;animation-duration:' + (8 + Math.random() * 8) + 's;animation-delay:-' + Math.random() * 14 + 's;width:' + (6 + Math.random() * 6) + 'px;height:' + (9 + Math.random() * 8) + 'px';
-    sd.appendChild(s);
-  }
-
-  /* ৬) দাম, পরিমাণ ও সর্বমোট */
-  $$('[data-price]').forEach(e => e.textContent = money(P));
-  const fq = $('#fq');
-  for (let i = 1; i <= C.maxQty; i++) fq.insertAdjacentHTML('beforeend', '<option value="' + i + '">' + bn(i) + ' বোতল — ' + money(i * P) + '</option>');
-  const sum = () => { const q = +fq.value; $('#sUnit').textContent = money(P) + ' × ' + bn(q); $('#sTot').textContent = money(q * P); };
-  fq.onchange = sum; sum();
-  $('#fn').addEventListener('focus', () => S.warm(), { once: true });
-
-  /* ৭) অর্ডার সাবমিট → সংরক্ষণ → WhatsApp */
-  const msg = o => ['🛒 *নতুন অর্ডার — তেল-তরী*', 'অর্ডার নং: ' + o.orderNo, 'নাম: ' + o.name, 'ফোন: ' + o.phone, 'ঠিকানা: ' + o.address,
-    'পণ্য: ' + C.product + ' × ' + bn(o.qty) + ' বোতল', 'পণ্যের মূল্য: ' + money(o.total), 'ডেলিভারি চার্জ: ফ্রি',
-    'সর্বমোট: ' + money(o.total) + ' (ক্যাশ অন ডেলিভারি)'].concat(o.note ? ['নোট: ' + o.note] : []).join('\n');
-
-  $('#of').addEventListener('submit', async e => {
+function handleOrder(e) {
     e.preventDefault();
-    const name = $('#fn').value.trim(), addr = $('#fa').value.trim(), note = $('#fnote').value.trim();
-    const phone = norm($('#fp').value).replace(/[\s-]/g, '').replace(/^\+?88/, ''), err = $('#err');
-    if (name.length < 2) return err.textContent = 'আপনার নাম লিখুন।', $('#fn').focus();
-    if (!/^01[3-9]\d{8}$/.test(phone)) return err.textContent = 'সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন, যেমনঃ 01712345678', $('#fp').focus();
-    if (addr.length < 8) return err.textContent = 'বাসা/হোল্ডিং, রোড, থানা ও জেলাসহ সম্পূর্ণ ঠিকানা লিখুন।', $('#fa').focus();
-    err.textContent = '';
-    const btn = $('#sub'); btn.disabled = true; btn.textContent = 'অর্ডার পাঠানো হচ্ছে…';
-    const q = +fq.value;
-    const o = { orderNo: 'TT-' + Date.now().toString(36).slice(-5).toUpperCase(), name, phone, address: addr, qty: q, unitPrice: P, total: q * P, note, status: 'new', createdAt: Date.now() };
-    await S.create(o);
-    const url = 'https://wa.me/' + C.shopPhone + '?text=' + encodeURIComponent(msg(o));
-    const rows = [['নাম', o.name], ['ফোন', o.phone], ['ঠিকানা', o.address], ['পরিমাণ', bn(o.qty) + ' বোতল'], ['সর্বমোট', money(o.total) + ' (ক্যাশ অন ডেলিভারি)'], ['অবস্থা', S.ST.new]];
-    $('#dSum').innerHTML = rows.map(r => '<div><dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd></div>').join('');
-    $('#of').hidden = true; $('#done').hidden = false;
-    $('#dNo').textContent = o.orderNo; $('#dWa').href = url; lastMsg = msg(o);
-    $('#done').scrollIntoView({ block: 'center', behavior: 'smooth' });
-    setTimeout(() => { location.href = url; }, 3500);   // কনফার্মেশন দেখানোর পর ক্লায়েন্টের WhatsApp-এ
-  });
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
 
-  /* ৮) আমার অর্ডার (শুধু নিজের) */
-  const dlg = $('#mine');
-  async function openMine() {
-    dlg.showModal(); const box = $('#mList'); box.innerHTML = '<p>লোড হচ্ছে…</p>';
-    const l = await S.mine();
-    box.innerHTML = l.length ? l.map(o => '<article><b>' + o.orderNo + '</b><span class="tag">' + (S.ST[o.status] || o.status) + '</span><p>' +
-      new Date(o.createdAt).toLocaleDateString('bn-BD') + ' · ' + bn(o.qty) + ' বোতল · ' + money(o.total) + '</p></article>').join('')
-      : '<p>এই ডিভাইস থেকে এখনো কোনো অর্ডার করা হয়নি।</p>';
-  }
-  $$('.openMine').forEach(b => b.onclick = openMine);
-  $('#mClose').onclick = () => dlg.close();
+    const orderData = {
+        name: name,
+        phone: phone,
+        address: address,
+        date: new Date().toLocaleString()
+    };
 
-  /* WhatsApp / মেসেঞ্জার বাটন */
-  let lastMsg = '';
-  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  $$('[data-wa]').forEach(a => a.href = 'https://wa.me/' + C.shopPhone);
-  $$('[data-ms]').forEach(a => {
-    if (!C.messenger) { a.hidden = true; return; }
-    a.href = 'https://m.me/' + C.messenger; a.target = '_blank'; a.rel = 'noopener';
-    a.addEventListener('click', () => { if (lastMsg && navigator.clipboard) navigator.clipboard.writeText(lastMsg).catch(() => {}); });
-  });
+    let orders = JSON.parse(localStorage.getItem('teltori_orders') || '[]');
+    orders.unshift(orderData);
+    localStorage.setItem('teltori_orders', JSON.stringify(orders));
 
-  /* ৯) মোবাইলের নিচের অর্ডার বার */
-  const bar = $('.bar'); let inOrder = false;
-  const upd = () => bar.classList.toggle('show', scrollY > 500 && !inOrder);
-  new IntersectionObserver(e => { inOrder = e[0].isIntersecting; upd(); }).observe($('#order'));
-  addEventListener('scroll', upd, { passive: true });
-})();
+    document.getElementById('orderDetailsSummary').innerHTML = `
+        গ্রাহক: <b>${name}</b><br>
+        মোবাইল: <b>${phone}</b><br>
+        ঠিকানা: <b>${address}</b><br><br>
+        খুব শীঘ্রই আমাদের প্রতিনিধি আপনার সাথে যোগাযোগ করবেন।
+    `;
+    document.getElementById('orderModal').style.display = 'flex';
+    document.getElementById('orderForm').reset();
+}
+
+function closeModal() {
+    document.getElementById('orderModal').style.display = 'none';
+}
+
+function openAdminModal() {
+    const pass = prompt("অ্যাডমিন পাসওয়ার্ড প্রবেশ করান:");
+    if (pass === "teltori2026") {
+        window.location.href = "admin.html";
+    } else if (pass !== null) {
+        alert("ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিয়ে আবার চেষ্টা করুন।");
+    }
+}
