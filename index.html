@@ -3,240 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>তেলতরি হেয়ার কেয়ার কম্বো - চুলের যত্নে প্রকৃতির শক্তি</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS Animation Library -->
+    <title>টেলতরি হেয়ার কেয়ার কম্বো - Teltori Hair Care Combo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Google Fonts (SolaimanLipi / Inter) -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background-color: #0b2317;
-            color: #f3f4f6;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-[#0b2317] text-gray-100 selection:bg-emerald-500 selection:text-white">
+<body>
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-[#133824] text-emerald-300 text-center py-2 text-sm font-medium border-b border-emerald-800" data-aos="fade-down">
-        🌿 চুলের যত্নে প্রকৃতির শক্তি | ১০০% খাঁটি ও প্রাকৃতিক হেয়ার কেয়ার কম্বো 🌿
+    <!-- Hidden Double Click Zone for Admin Access -->
+    <div id="admin-trigger-zone" title="Double click for Admin Panel" ondblclick="openAdminModal()"></div>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        🌿 ১০০% খাঁটি ও প্রাকৃতিকভাবে প্রস্তুতকৃত টেলতরি হেয়ার কেয়ার কম্বো প্যাক - চুল পড়ার সমস্যার চিরতরে সমাধান!
     </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-seedling"></i> টেলতরি (Teltori)
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero">হোম</a></li>
+            <li><a href="#showcase">কম্বো প্যাক</a></li>
+            <li><a href="#benefits">উপকারিতা</a></li>
+            <li><a href="#order">অর্ডার করুন</a></li>
+        </ul>
+    </header>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#133824] to-[#0b2317]">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right" data-aos-duration="1000">
-                <span class="bg-emerald-800 text-emerald-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Natural Care & Organic</span>
-                <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-white mt-4 mb-6 leading-tight">
-                    তেলতরি হেয়ার কেয়ার কম্বো
-                </h1>
-                <p class="text-lg text-emerald-100 mb-6">
-                    নারিকেল তেল, ভেন্নার তেল ও ক্যাস্টর অয়েলের নিখুঁত মিশ্রণে তৈরি ১০০% কেমিক্যাল মুক্ত প্রিমিয়াম হেয়ার কম্বো। চুল পড়া রোধ করে এবং চুলকে করে তোলে আরও ঘন, লম্বা ও উজ্জ্বল।
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#order-section" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition duration-300 transform hover:scale-105">
-                        অর্ডার করুন এখনই
-                    </a>
-                    <a href="#details-section" class="border border-emerald-500 text-emerald-300 hover:bg-emerald-900 font-semibold py-3 px-6 rounded-xl transition duration-300">
-                        বিস্তারিত জানুন
-                    </a>
-                </div>
-            </div>
-            <div class="flex justify-center" data-aos="fade-left" data-aos-duration="1000">
-                <img src="1000061602.png" alt="Teltori Hair Care Combo" class="rounded-2xl shadow-2xl border-4 border-emerald-800 max-h-[450px] object-cover">
-            </div>
+    <section class="hero" id="hero" data-aos="fade-in">
+        <h1>টেলতরি হেয়ার কেয়ার কম্বো</h1>
+        <p class="subtitle">নারিকেল তেল + ভেন্নার তেল + ক্যাস্টর অয়েল</p>
+        <div class="badge-pills">
+            <div class="badge-pill"><i class="fa-solid fa-check"></i> ১০০% ন্যাচারাল</div>
+            <div class="badge-pill"><i class="fa-solid fa-shield-halved"></i> কেমিক্যাল ফ্রি</div>
+            <div class="badge-pill"><i class="fa-solid fa-star"></i> প্রিমিয়াম কোয়ালিটি</div>
         </div>
     </section>
 
-    <!-- Combo Details Section -->
-    <section id="details-section" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl font-bold text-white">কম্বো প্যাকেটে যা যা থাকছে ও উপকারিতা</h2>
-            <p class="text-emerald-300 mt-2">প্রাকৃতিক উপাদানে তৈরি প্রতিটি তেলের আলাদা জাদুকরী গুণাগুণ</p>
+    <!-- Showcase Section -->
+    <section class="showcase-container" id="showcase" data-aos="fade-up">
+        <div class="product-image-box">
+            <img src="images/1000061602.png" alt="Teltori Hair Care Combo Pack">
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Card 1: Coconut Oil -->
-            <div class="bg-[#133824] p-6 rounded-2xl border border-emerald-800 shadow-xl" data-aos="fade-up" data-aos-delay="100">
-                <img src="1000061324.jpg" alt="Coconut Oil" class="rounded-xl h-48 w-full object-cover mb-4 border border-emerald-700">
-                <h3 class="text-xl font-bold text-white mb-2">খাঁটি নারিকেল তেল (500 ml)</h3>
-                <ul class="text-emerald-200 text-sm space-y-2">
-                    <li>✨ চুল ও ত্বকে গভীর পুষ্টি জোগায়।</li>
-                    <li>✨ চুল সফট, শুষ্ক ও সতেজ রাখে।</li>
-                    <li>✨ ১০০% খাঁটি ও প্রাকৃতিক নারকেলের নির্যাস।</li>
-                </ul>
-            </div>
-
-            <!-- Card 2: Castor Oil -->
-            <div class="bg-[#133824] p-6 rounded-2xl border border-emerald-800 shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                <img src="1000061201.jpg" alt="Castor Oil" class="rounded-xl h-48 w-full object-cover mb-4 border border-emerald-700">
-                <h3 class="text-xl font-bold text-white mb-2">ভেন্নার তেল / ক্যাস্টর অয়েল (250 ml)</h3>
-                <ul class="text-emerald-200 text-sm space-y-2">
-                    <li>✨ চুল পড়া কমাতে অত্যন্ত সহায়ক।</li>
-                    <li>✨ চুলের গোড়া শক্ত ও মজবুত করে।</li>
-                    <li>✨ চুলে আনে প্রাকৃতিক উজ্জ্বলতা।</li>
-                </ul>
-            </div>
-
-            <!-- Card 3: Combo Box -->
-            <div class="bg-[#133824] p-6 rounded-2xl border border-emerald-800 shadow-xl" data-aos="fade-up" data-aos-delay="300">
-                <img src="1000061601.jpg" alt="Combo Box" class="rounded-xl h-48 w-full object-cover mb-4 border border-emerald-700">
-                <h3 class="text-xl font-bold text-white mb-2">প্রিমিয়াম গিফট কম্বো বক্স</h3>
-                <ul class="text-emerald-200 text-sm space-y-2">
-                    <li>🌿 একসাথে ৩টি তেলের পূর্ণাঙ্গ সেট।</li>
-                    <li>🌿 কেমিক্যাল ও প্যারাবেন মুক্ত নিরাপদ ব্যবহার।</li>
-                    <li>🌿 গিফট বা নিজের ব্যবহারের জন্য সেরা চয়েস।</li>
-                </ul>
-            </div>
+        <div class="product-details">
+            <h2>প্রিমিয়াম হেয়ার কেয়ার কম্বো প্যাক</h2>
+            <div class="price-tag">৳১২৫০ <span>৳১৫০০</span></div>
+            <p style="margin-bottom: 25px; color: var(--text-muted);">
+                আমাদের এই স্পেশাল কম্বো প্যাকে রয়েছে খাঁটি নারিকেল তেল, ভেন্নার তেল এবং প্রিমিয়াম ক্যাস্টর অয়েল। চুলের সুষম পুষ্টি ও মজবুত বৃদ্ধির জন্য এটি অত্যন্ত কার্যকরী।
+            </p>
+            <ul class="combo-features">
+                <li><i class="fa-solid fa-circle-check"></i> চুল পড়া কমাতে দারুণ কার্যকরী</li>
+                <li><i class="fa-solid fa-circle-check"></i> চুলের গোড়া শক্ত ও মজবুত করে</li>
+                <li><i class="fa-solid fa-circle-check"></i> চুলে আনে প্রাকৃতিক উজ্জ্বলতা ও সিল্কি ভাব</li>
+                <li><i class="fa-solid fa-circle-check"></i> নতুন চুল গজাতে সাহায্য করে</li>
+            </ul>
+            <a href="#order" class="submit-btn" style="display:inline-block; text-align:center; text-decoration:none; padding: 12px 30px;">অর্ডার করতে নিচে যান</a>
         </div>
     </section>
+
+    <!-- Benefits Section -->
+    <h2 class="section-title" id="benefits" data-aos="fade-up">তেল দুটির অসাধারণ উপকারিতা</h2>
+    <p class="section-subtitle" data-aos="fade-up">প্রতিটি উপাদানের নিখুঁত কার্যকারিতা আপনার চুলের যত্নে</p>
+
+    <div class="benefits-grid">
+        <div class="benefit-card" data-aos="fade-right">
+            <h3><i class="fa-solid fa-bottle-droplet"></i> নারিকেল তেলের উপকারিতা</h3>
+            <ul>
+                <li>চুলের গোড়ায় প্রয়োজনীয় পুষ্টি ও গভীর ময়েশ্চারাইজেশন জোগায়।</li>
+                <li>মাথার ত্বকের খুশকি ও শুষ্কতা দূর করতে অতুলনীয় ভূমিকা রাখে।</li>
+                <li>চুলকে রূক্ষতা থেকে রক্ষা করে নরম ও কোমল করে তোলে।</li>
+                <li>নিয়মিত ব্যবহারে চুলের প্রাকৃতিক বৃদ্ধি দ্রুততর হয়।</li>
+            </ul>
+        </div>
+
+        <div class="benefit-card" data-aos="fade-left">
+            <h3><i class="fa-solid fa-droplet"></i> ভেন্নার তেল ও ক্যাস্টর অয়েলের উপকারিতা</h3>
+            <ul>
+                <li>চুল পড়া দ্রুত কমাতে এবং নতুন চুল গজাতে বিশেষভাবে সাহায্য করে।</li>
+                <li>চুলের গোড়া ও ফলিকল মজবুত করে চুল ভাঙা রোধ করে।</li>
+                <li>চুলে প্রাকৃতিক উজ্জ্বলতা ও ঘন ভাব ফিরিয়ে আনে।</li>
+                <li>চুলের রুক্ষ ভাব দূর করে সম্পূর্ণ স্বাস্থ্যোজ্জ্বল লুক দেয়।</li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Order Section -->
-    <section id="order-section" class="py-16 px-4 sm:px-6 lg:px-8 bg-[#133824]/50 border-t border-emerald-800">
-        <div class="max-w-3xl mx-auto bg-[#133824] p-8 rounded-2xl shadow-2xl border border-emerald-700" data-aos="zoom-in">
-            <h2 class="text-3xl font-bold text-center text-white mb-2">অর্ডার কনফার্ম করুন</h2>
-            <p class="text-center text-emerald-300 mb-8">আপনার সঠিক তথ্য দিয়ে নিচের ফর্মটি পূরণ করুন</p>
-            
-            <form id="orderForm" onsubmit="handleOrder(event)" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-emerald-200 mb-2">আপনার নাম</label>
-                    <input type="text" id="customerName" required class="w-full px-4 py-3 rounded-xl bg-[#0b2317] border border-emerald-700 text-white focus:outline-none focus:border-emerald-500" placeholder="পুরо নাম লিখুন">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-emerald-200 mb-2">মোবাইল নাম্বার</label>
-                    <input type="tel" id="customerPhone" required class="w-full px-4 py-3 rounded-xl bg-[#0b2317] border border-emerald-700 text-white focus:outline-none focus:border-emerald-500" placeholder="আপনার মোবাইল নাম্বার">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-emerald-200 mb-2">পূর্ণ ঠিকানা</label>
-                    <textarea id="customerAddress" rows="3" required class="w-full px-4 py-3 rounded-xl bg-[#0b2317] border border-emerald-700 text-white focus:outline-none focus:border-emerald-500" placeholder="বাসার নম্বর, রোড, এলাকা, থানা, জেলা"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl transition duration-300 shadow-lg">
-                    অর্ডার সাবমিট করুন
-                </button>
-            </form>
-
-            <!-- Success Order Details Card (Hidden by default) -->
-            <div id="orderSuccess" class="hidden mt-8 p-6 bg-[#0b2317] rounded-xl border border-emerald-600 text-center">
-                <h3 class="text-2xl font-bold text-emerald-400 mb-2">✅ অর্ডার সফলভাবে সম্পন্ন হয়েছে!</h3>
-                <p class="text-gray-300 mb-4">ধন্যবাদ! আপনার অর্ডারটি গ্রহণ করা হয়েছে। খুব শীঘ্রই আমরা আপনার সাথে যোগাযোগ করব।</p>
-                <div class="text-left text-sm text-gray-200 bg-[#133824] p-4 rounded-lg space-y-1">
-                    <p><strong>নাম:</strong> <span id="resName"></span></p>
-                    <p><strong>মোবাইল:</strong> <span id="resPhone"></span></p>
-                    <p><strong>ঠিকানা:</strong> <span id="resAddress"></span></p>
-                </div>
+    <section class="order-section" id="order" data-aos="zoom-in">
+        <h2>অর্ডার কনফার্ম করুন</h2>
+        <p>আপনার সঠিক তথ্য দিয়ে নিচের ফর্মটি পূরণ করুন। ক্যাশ অন ডেলিভারিতে পণ্য পৌঁছে দেওয়া হবে।</p>
+        
+        <form id="orderForm" onsubmit="handleOrder(event)">
+            <div class="form-group">
+                <label for="name">আপনার নাম *</label>
+                <input type="text" id="name" required placeholder="আপনার সম্পূর্ণ নাম লিখুন">
             </div>
-        </div>
+            <div class="form-group">
+                <label for="phone">মোবাইল নাম্বার *</label>
+                <input type="tel" id="phone" required placeholder="১১ ডিজিটের মোবাইল নাম্বার লিখুন">
+            </div>
+            <div class="form-group">
+                <label for="address">সম্পূর্ণ ঠিকানা *</label>
+                <textarea id="address" rows="3" required placeholder="বাসা/হোল্ডিং, রোড, এলাকা, থানা ও জেলা"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">অর্ডার কনফার্ম করুন</button>
+        </form>
     </section>
 
-    <!-- Contact / Social Links -->
-    <footer class="py-8 bg-[#08170f] text-center border-t border-emerald-900">
-        <p class="text-emerald-400 font-medium mb-4">যোগাযোগ করুন বা মেসেজে কথা বলুন:</p>
-        <div class="flex justify-center space-x-6">
-            <a href="https://wa.me/8801800000000" target="_blank" class="bg-emerald-700 hover:bg-emerald-600 px-6 py-2 rounded-lg text-white font-semibold transition">WhatsApp</a>
-            <a href="https://m.me/yourpage" target="_blank" class="bg-emerald-700 hover:bg-emerald-600 px-6 py-2 rounded-lg text-white font-semibold transition">Messenger</a>
+    <!-- Success Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: var(--emerald-primary); margin-bottom: 15px;"></i>
+            <h3>অভিনন্দন! আপনার অর্ডার সফল হয়েছে।</h3>
+            <p id="orderDetailsSummary"></p>
+            <button class="close-modal-btn" onclick="closeModal()">ঠিক আছে</button>
         </div>
-        <p class="text-xs text-gray-500 mt-6">&copy; 2026 Teltori Hair Care. All Rights Reserved.</p>
+    </div>
+
+    <!-- Floating Social & WhatsApp -->
+    <div class="floating-social">
+        <a href="https://wa.me/8801700000000" target="_blank" class="social-icon whatsapp" title="WhatsApp Chat"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://m.me/teltori" target="_blank" class="social-icon messenger" title="Messenger Chat"><i class="fa-brands fa-facebook-messenger"></i></a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© ২০২৬ টেলতরি (Teltori). সর্বস্বত্ব সংরক্ষিত। | প্রাকৃতিকভাবে সুন্দর চুলের যত্ন।</p>
     </footer>
 
-    <!-- Admin Access Floating Button -->
-    <div class="fixed bottom-5 right-5 z-50">
-        <button onclick="openAdminModal()" class="bg-emerald-800 hover:bg-emerald-700 text-white p-3 rounded-full shadow-2xl border border-emerald-500 flex items-center justify-center transition transform hover:scale-110" title="অ্যাডমিন প্যানেল">
-            ⚙️
-        </button>
-    </div>
-
-    <!-- Admin Login / Panel Modal -->
-    <div id="adminModal" class="fixed inset-0 bg-black/70 hidden flex items-center justify-center z-50 px-4">
-        <div class="bg-[#133824] p-6 rounded-2xl max-w-md w-full border border-emerald-700 relative">
-            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold">✕</button>
-            <div id="adminLoginView">
-                <h3 class="text-xl font-bold text-white mb-4">অ্যাডমিন লগইন</h3>
-                <p class="text-sm text-emerald-300 mb-4">পাসওয়ার্ড দিয়ে এডমিন প্যানেলে প্রবেশ করুন।</p>
-                <input type="password" id="adminPasswordInput" placeholder="পাসওয়ার্ড দিন" class="w-full px-4 py-2 rounded-lg bg-[#0b2317] border border-emerald-700 text-white mb-4 focus:outline-none">
-                <button onclick="verifyAdmin()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-lg transition">প্রবেশ করুন</button>
-            </div>
-            <div id="adminDashboardView" class="hidden">
-                <h3 class="text-xl font-bold text-emerald-400 mb-4">📊 অ্যাডমিন ড্যাশবোর্ড (অর্ডার লিস্ট)</h3>
-                <div id="orderListContainer" class="max-h-60 overflow-y-auto space-y-3 text-sm text-gray-200 mb-4">
-                    <!-- Orders will load here -->
-                </div>
-                <button onclick="closeAdminModal()" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-2 rounded-lg transition">বন্ধ করুন</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- AOS Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-
-        // Order Handler
-        function handleOrder(e) {
-            e.preventDefault();
-            const name = document.getElementById('customerName').value;
-            const phone = document.getElementById('customerPhone').value;
-            const address = document.getElementById('customerAddress').value;
-
-            const orderData = { name, phone, address, date: new Date().toLocaleString() };
-            
-            // Save to localStorage
-            let orders = JSON.parse(localStorage.getItem('teltori_orders')) || [];
-            orders.push(orderData);
-            localStorage.setItem('teltori_orders', JSON.stringify(orders));
-
-            // Display success
-            document.getElementById('resName').innerText = name;
-            document.getElementById('resPhone').innerText = phone;
-            document.getElementById('resAddress').innerText = address;
-            document.getElementById('orderForm').reset();
-            document.getElementById('orderSuccess').classList.remove('hidden');
-        }
-
-        // Admin Access Control
-        const ADMIN_PASSWORD = "teltori2026"; // আপনার ক্লায়েন্টের জন্য অ্যাডমিন পাসওয়ার্ড নির্ধারিত করা হলো
-
-        function openAdminModal() {
-            document.getElementById('adminModal').classList.remove('hidden');
-        }
-
-        function closeAdminModal() {
-            document.getElementById('adminModal').classList.add('hidden');
-            document.getElementById('adminLoginView').classList.remove('hidden');
-            document.getElementById('adminDashboardView').classList.add('hidden');
-            document.getElementById('adminPasswordInput').value = '';
-        }
-
-        function verifyAdmin() {
-            const pass = document.getElementById('adminPasswordInput').value;
-            if(pass === ADMIN_PASSWORD) {
-                document.getElementById('adminLoginView').classList.add('hidden');
-                document.getElementById('adminDashboardView').classList.remove('hidden');
-                
-                // Load orders
-                let orders = JSON.parse(localStorage.getItem('teltori_orders')) || [];
-                const container = document.getElementById('orderListContainer');
-                if(orders.length === 0) {
-                    container.innerHTML = '<p class="text-gray-400 text-center">এখনো কোনো অর্ডার আসেনি।</p>';
-                } else {
-                    container.innerHTML = orders.map((o, idx) => `
-                        <div class="bg-[#0b2317] p-3 rounded-lg border border-emerald-800">
-                            <p class="font-bold text-emerald-300">অর্ডার #${idx + 1} (${o.date})</p>
-                            <p>নাম: ${o.name}</p>
-                            <p>মোবাইল: ${o.phone}</p>
-                            <p>ঠিকানা: ${o.address}</p>
-                        </div>
-                    `).join('');
-                }
-            } else {
-                alert('ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।');
-            }
-        }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
